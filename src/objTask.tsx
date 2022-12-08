@@ -23,7 +23,7 @@ export const ObjTask = () => {
     age234: 25324,
     skills: ["React", "php"],
   };
-  const recFunc = (obj, prev = "") => {
+  const recFunc = (obj:any, prev = "") => {
     for (let key in obj) {
       if (typeof obj[key] === "object" && !Array.isArray(obj[key])) {
         let restPart = "";
