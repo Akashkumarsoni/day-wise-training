@@ -9,7 +9,7 @@ export const ObjTask = () => {
       currentCompany: "cedcoss",
       nextCompanies: ["Meta", "Google"],
     },
-    company11: {
+    company2: {
       previousCompany11: ["Flipkart", "Microsoft"],
       currentCompany11: "cedcoss",
       nextCompanies11: ["Meta", "Google"],
@@ -23,20 +23,27 @@ export const ObjTask = () => {
     age234: 25324,
     skills: ["React", "php"],
   };
-  for (let i in person) {
-    if (typeof person[i] === "object" && !Array.isArray(person[i])) {
-      Object.keys(person[i]).map(j=>{
-        console.log('"'+i+'.'+j+'":'+person[i][j])
-      })
-    } else if (
-      typeof person[i] === "string" ||
-      typeof person[i] === "boolean" ||
-      typeof person[i] === "number"
-    ) {
-      console.log('"', i, '":', person[i]);
-    } else {
-      console.log('"', i, '":', person[i]);
+  const recFunc = (obj, prev = "") => {
+    for (let key in obj) {
+      if (typeof obj[key] === "object" && !Array.isArray(obj[key])) {
+        let restPart = "";
+        if (prev === "") {
+          restPart = key + "";
+        } else {
+          restPart = prev + "." + key + "";
+        }
+        recFunc(obj[key], restPart);
+      } else if (
+        typeof obj[key] === "string" ||
+        typeof obj[key] === "boolean" ||
+        typeof obj[key] === "number"
+      ) {
+        console.log('"', prev, ".", key, '":', obj[key]);
+      } else {
+        console.log('"', prev, ".", key, '":', obj[key]);
+      }
     }
-  }
+  };
+  recFunc(person);
   return <></>;
 };
