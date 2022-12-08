@@ -1,10 +1,10 @@
-import "./App.css";
-import { ObjTask } from "./objTask";
+import './App.css';
+import Todo from './todo';
 
 function App() {
   return (
     <div className="App">
-      <ObjTask />
+      <Todo />
     </div>
   );
 }
