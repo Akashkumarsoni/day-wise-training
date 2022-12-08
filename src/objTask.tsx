@@ -1,49 +1,51 @@
+import { Button, Card, TextField, TextStyles } from "@cedcommerce/ounce-ui";
+import { useState } from "react";
+
 export const ObjTask = () => {
-  let person = {
-    name: {
-      firstName: "vishal",
-      lastName: "singh",
-    },
-    company: {
-      previousCompany: ["Flipkart", "Microsoft"],
-      currentCompany: "cedcoss",
-      nextCompanies: ["Meta", "Google"],
-    },
-    company2: {
-      previousCompany11: ["Flipkart", "Microsoft"],
-      currentCompany11: "cedcoss",
-      nextCompanies11: ["Meta", "Google"],
-      company161: {
-        previousCompany181: ["Flipkart", "Microsoft"],
-        currentCompany181: "cedcoss",
-        nextCompanies811: ["Meta", "Google"],
-      },
-    },
-    age: 25,
-    age234: 25324,
-    skills: ["React", "php"],
-  };
-  const recFunc = (obj:any, prev = "") => {
-    for (let key in obj) {
-      if (typeof obj[key] === "object" && !Array.isArray(obj[key])) {
-        let restPart = "";
-        if (prev === "") {
-          restPart = key + "";
-        } else {
-          restPart = prev + "." + key + "";
-        }
-        recFunc(obj[key], restPart);
-      } else if (
-        typeof obj[key] === "string" ||
-        typeof obj[key] === "boolean" ||
-        typeof obj[key] === "number"
-      ) {
-        console.log('"', prev, ".", key, '":', obj[key]);
+  const [inp, setInp] = useState<string>("");
+  const [opt, setOpt] = useState<string>("");
+  const inpFunc = (str:string) => {
+    let sortedStr = str.split("");
+    let count = 1;
+    let op = [];
+    for (let i = 0; i < sortedStr.length; i++) {
+      if (sortedStr[i] === sortedStr[i + 1]) {
+        count = count + 1;
       } else {
-        console.log('"', prev, ".", key, '":', obj[key]);
+        let res = sortedStr[i] + "" + count;
+        op.push(res);
+        count = 1;
       }
     }
+    let k = "";
+    op.map((i) => {
+      k = k + i;
+    });
+    setOpt(k);
   };
-  recFunc(person);
-  return <></>;
+  return (
+    <>
+      <Card>
+        <TextField
+          name="Enter a string"
+          onChange={function noRefCheck(e) {
+            setInp(e);
+          }}
+          strength
+          type="text"
+          value={inp}
+        />
+        <Button
+          onClick={function noRefCheck() {
+            inpFunc(inp);
+          }}
+        >
+          Submit
+        </Button>
+        <Card>
+        <TextStyles>Output : {opt}</TextStyles>
+        </Card>
+      </Card>
+    </>
+  );
 };

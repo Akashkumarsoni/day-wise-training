@@ -1,10 +1,10 @@
 import "./App.css";
-import Login from "./Login";
+import { ObjTask } from "./objTask";
 
 function App() {
   return (
     <div className="App">
-      <Login />
+      <ObjTask />
     </div>
   );
 }
