@@ -1,9 +1,10 @@
 import React from "react";
 import { Draggable } from "react-beautiful-dnd";
 
-const Task = (props) => {
+const TaskBox = (props) => {
   return (
-    <Draggable index={props.index} draggableId={props.index.toString()}>
+    <Draggable
+     index={props.index} draggableId={props.index.toString()}>
       {(provided) => (
         <div
           className="list-item"
@@ -22,4 +23,4 @@ const Task = (props) => {
   );
 };
 
-export default Task;
+export default TaskBox;
