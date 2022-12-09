@@ -1,4 +1,3 @@
-import { Select } from "@shopify/polaris";
 import { useState } from "react";
 import "./App.css";
 import { dataTaxonomy } from "./data";
@@ -21,7 +20,6 @@ function GoogleTaxonomy() {
       if (!arr[current].includes(updatedArr[i][j])) arr[current].push(updatedArr[i][j]);
     }
   }
-
   const selectingEvent = (val, i) => {
     let arr1 = print.slice(0, i + 1);
     if (arr[val].length > 0) setPrint([...arr1, arr[val]]);
