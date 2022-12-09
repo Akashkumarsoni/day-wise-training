@@ -1,10 +1,10 @@
 import './App.css';
-import Todo from './todo';
+import GoogleTaxonomy from './google';
 
 function App() {
   return (
     <div className="App">
-      <Todo />
+      <GoogleTaxonomy />
     </div>
   );
 }
