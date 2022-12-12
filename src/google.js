@@ -17,7 +17,8 @@ function GoogleTaxonomy() {
   for (let i = 0; i < updatedArr.length; i++) {
     for (let j = 1; j < updatedArr[i].length; j++) {
       let current = updatedArr[i][j - 1];
-      if (!arr[current].includes(updatedArr[i][j])) arr[current].push(updatedArr[i][j]);
+      if (!arr[current].includes(updatedArr[i][j]))
+        arr[current].push(updatedArr[i][j]);
     }
   }
   const selectingEvent = (val, i) => {
@@ -27,25 +28,24 @@ function GoogleTaxonomy() {
   return (
     <div className="app">
       <h1>Google Taxonomy</h1>
-     <div className="selectbox">
-     {print.map((item, i) => (
-        <select
-          onChange={(event) => selectingEvent(event.target.value, i)}
-          key={i}
-        >
-          <option disabled>select</option>
-          {item.map((it, k) => (
-            <>
-              <option value={it} key={k * 100}>
-                {it}
-              </option>
-            </>
-          ))}
-        </select>
-      ))}
-     </div>
+      <div className="selectbox">
+        {print.map((item, i) => (
+          <select
+            onChange={(event) => selectingEvent(event.target.value, i)}
+            key={i}
+          >
+            <option disabled>select</option>
+            {item.map((it, k) => (
+              <>
+                <option value={it} key={k * 100}>
+                  {it}
+                </option>
+              </>
+            ))}
+          </select>
+        ))}
+      </div>
     </div>
-
   );
 }
 

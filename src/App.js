@@ -1,10 +1,11 @@
 import './App.css';
 import GoogleTaxonomy from './google';
+import HOC from './hoc';
 
 function App() {
   return (
     <div className="App">
-      <GoogleTaxonomy />
+      <HOC comp={GoogleTaxonomy}/>
     </div>
   );
 }
