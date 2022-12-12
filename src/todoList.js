@@ -34,27 +34,8 @@ const TodoList = (props) => {
             </li>
             {props.tasks.map((i, ind) => {
               return (
-                <li key={i.id} className="w-100">
-                  {/* <TaskBox task_label={i.task} index={i.index}/> */}
-                  <Draggable
-                    index={i.index}
-                    draggableId={i.index.toString()}
-                  >
-                    {(provided) => (
-                      <div
-                        className="list-item"
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                        ref={provided.innerRef}
-                      >
-                        <label>{i.task}</label>
-                        <div className="list-edt-del">
-                          <button onClick={props.edit}>Edit</button>
-                          <button onClick={props.del}>Delete</button>
-                        </div>
-                      </div>
-                    )}
-                  </Draggable>
+                <li  className="w-100">
+                  <TaskBox task_label={i.task} index={ind} id={i.id}/>
                 </li>
               );
             })}

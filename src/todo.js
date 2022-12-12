@@ -5,14 +5,14 @@ import TodoList from "./todoList";
 
 const Todo = () => {
   const [reviewTasks, setReviewTasks] = useState([
-    // { index: 0, task: "reviews2" },
-    // { index: 1, task: "reviews" },
+    { id: "dsfgd", task: "reviews2" },
+    { id: "dfgh", task: "reviews" },
   ]);
   const [pendingTasks, setPendingTasks] = useState([
-    { index: 0, task: "pending" },
+    { id: "sdfgdf", task: "pending" },
   ]);
   const [completeTasks, setCompleteTasks] = useState([
-    // { index: 3, task: "completed" },
+    { id: "sxdfgds", task: "completed" },
   ]);
   const [reviewInp, setReviewInp] = useState("");
   const [pendingInp, setPendingInp] = useState("");
@@ -30,7 +30,7 @@ const Todo = () => {
     } else {
       let indx =
         reviewTasks.length + pendingTasks.length + completeTasks.length;
-      let currentTask = { index: indx, task: reviewInp };
+      let currentTask = { id: indx, task: reviewInp };
       let arr = [currentTask, ...reviewTasks];
       setReviewTasks(arr);
       setReviewInp("");
@@ -48,7 +48,7 @@ const Todo = () => {
     } else {
       let indx =
         reviewTasks.length + pendingTasks.length + completeTasks.length;
-      let currentTask = { index: indx, task: pendingInp };
+      let currentTask = { id: indx, task: pendingInp };
       let arr = [currentTask, ...pendingTasks];
       setPendingTasks(arr);
       setPendingInp("");
@@ -66,7 +66,7 @@ const Todo = () => {
     } else {
       let indx =
         reviewTasks.length + pendingTasks.length + completeTasks.length;
-      let currentTask = { index: indx, task: completedInp };
+      let currentTask = { id: indx, task: completedInp };
       let arr = [currentTask, ...completeTasks];
       setCompleteTasks(arr);
       setCompletedInp("");

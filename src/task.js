@@ -4,7 +4,7 @@ import { Draggable } from "react-beautiful-dnd";
 const TaskBox = (props) => {
   return (
     <Draggable
-     index={props.index} draggableId={props.index.toString()}>
+     index={props.index} draggableId={props.id.toString()}>
       {(provided) => (
         <div
           className="list-item"
