@@ -15,21 +15,19 @@ interface IState {
   loggedin: string;
 }
 interface IProps {}
-let Login: React.FC<IProps> = () => {
+let Signup: React.FC<IProps> = () => {
   const [state, setState] = useState<IState>({
     loading: false,
     message: "",
     loggedin: "",
   });
-  const [username, setUsername] = useState<string>("");
+  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+
   const submitDetails = () => {
-    setState({
-      ...state,
-      loading: true,
-    });
     let data = {
-      username: username,
+      email: email,
       password: password,
     };
     console.log(data);
@@ -39,8 +37,7 @@ let Login: React.FC<IProps> = () => {
         loading: false,
         loggedin: "done",
       });
-    } 
-    else {
+    } else {
       setState({
         ...state,
         loading: false,
@@ -58,7 +55,7 @@ let Login: React.FC<IProps> = () => {
           type="Heading"
           utility="none"
         >
-          Login
+          Signup
         </TextStyles>
         {state.loggedin === "done" && (
           <SuccessAlert responseMsg={state.message} />
@@ -69,12 +66,20 @@ let Login: React.FC<IProps> = () => {
         <Card cardType="Bordered">
           <FormElement horizontal={false}>
             <TextField
-              name="username"
+              name="name"
               onChange={(e) => {
-                setUsername(e);
+                setName(e);
               }}
-              placeHolder="Enter username"
-              value={username}
+              placeHolder="Enter name"
+              value={name}
+            />
+            <TextField
+              name="email"
+              onChange={(e) => {
+                setEmail(e);
+              }}
+              placeHolder="Enter email"
+              value={email}
             />
             <TextField
               name="password"
@@ -107,4 +112,4 @@ let Login: React.FC<IProps> = () => {
   );
 };
 
-export default Login;
+export default Signup;
