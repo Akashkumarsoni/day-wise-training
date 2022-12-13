@@ -27,7 +27,7 @@ const HOC = (IProps: ComponentType<any>) => {
             </FlexLayout>
           }
         />
-        <IProps/>
+        <IProps {...props}/>
         <PageFooter>
           <TextStyles>Cedcommerce @ 2020</TextStyles>
         </PageFooter>
