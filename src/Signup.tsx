@@ -1,6 +1,7 @@
 import {
   Button,
   Card,
+  FlexLayout,
   FormElement,
   Loader,
   TextField,
@@ -8,6 +9,7 @@ import {
 } from "@cedcommerce/ounce-ui";
 import React, { useState } from "react";
 import { DangerAlert, SuccessAlert } from "./components/alerts";
+import HOC from "./HOC";
 
 interface IState {
   loading: boolean;
@@ -26,12 +28,17 @@ let Signup: React.FC<IProps> = () => {
   const [password, setPassword] = useState<string>("");
 
   const submitDetails = () => {
+    setState({
+      ...state,
+      loading: true,
+    });
     let data = {
+      name : name,
       email: email,
       password: password,
     };
     console.log(data);
-    if (true) {
+    if (data.name !== "" || data.email !== "" ||data.password !== "") {
       setState({
         ...state,
         loading: false,
@@ -90,20 +97,23 @@ let Signup: React.FC<IProps> = () => {
               value={password}
               type="password"
             />
-            <Button
-              content="Submit"
-              halign="Equal"
-              iconAlign="left"
-              length="none"
-              onAction={function noRefCheck() {
-                submitDetails();
-              }}
-              onClick={function noRefCheck() {
-                submitDetails();
-              }}
-              thickness="thin"
-              type="Primary"
-            />
+            <FlexLayout valign="center" halign="fill">
+              <Button
+                content="Submit"
+                halign="Equal"
+                iconAlign="left"
+                length="none"
+                onAction={function noRefCheck() {
+                  submitDetails();
+                }}
+                onClick={function noRefCheck() {
+                  submitDetails();
+                }}
+                thickness="thin"
+                type="Primary"
+              />
+              <TextStyles content={<a href="/">Already have account?</a>} textcolor="primary" />
+            </FlexLayout>
           </FormElement>
         </Card>
         {state.loading && <Loader type="Loader2" />}
@@ -112,4 +122,4 @@ let Signup: React.FC<IProps> = () => {
   );
 };
 
-export default Signup;
+export default HOC(Signup);
