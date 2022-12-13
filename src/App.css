@@ -1,9 +1,20 @@
-.App {
-  /* text-align: center; */
+.w-100{
+  width: 100%;
 }
-.form-page{
-  margin: 10%;
+.time-label{
+  font-size: 35px;
+  font-weight: bolder;
+  text-align: center;
 }
-a{
-  margin: 0 20px;
+.time-label2{
+  color: red;
+  font-size: 35px;
+  font-weight: bolder;
+  text-align: center;
+}
+.time-label3{
+  color: blue;
+  font-size: 35px;
+  font-weight: bolder;
+  text-align: center;
 }
