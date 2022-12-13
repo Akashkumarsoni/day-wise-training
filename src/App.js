@@ -1,4 +1,4 @@
-import { Card, Select, Tag } from "@cedcommerce/ounce-ui";
+import { Card, FlexLayout, Select, Tag } from "@cedcommerce/ounce-ui";
 import { useEffect, useState } from "react";
 import "./App.css";
 
@@ -66,7 +66,6 @@ function App() {
           {
             group: highlights,
             label: "Highlights : Most selected options by you",
-            
           },
           {
             group: options,
@@ -80,19 +79,21 @@ function App() {
         }
         thickness="thick"
       />
-      {selectedArr.map((i, index) => {
-        return (
-          <div className="m-20" key={index}>
-            <Tag
-              destroy={function noRefCheck() {
-                removeTag(index);
-              }}
-            >
-              {i}
-            </Tag>
-          </div>
-        );
-      })}
+      <FlexLayout halign="start" order="Order" wrap="wrap">
+        {selectedArr.map((i, index) => {
+          return (
+            <div className="m-20" key={index}>
+              <Tag
+                destroy={function noRefCheck() {
+                  removeTag(index);
+                }}
+              >
+                {i}
+              </Tag>
+            </div>
+          );
+        })}
+      </FlexLayout>
     </Card>
   );
 }
