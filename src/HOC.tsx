@@ -2,12 +2,15 @@ import {
   FlexLayout,
   PageFooter,
   PageHeader,
-  TextStyles
+  TextStyles,
 } from "@cedcommerce/ounce-ui";
-import { ComponentType, FC } from "react";
+import { Children, ComponentType, FC, useState } from "react";
 
-const HOC = (IProps: ComponentType<any>) => {
-  return (props: any) => {
+const HOC = (Children: any) => {
+  
+    const DummyComp=(props: any) => {
+    const [pageName,setPageName] = useState("Login")
+
     return (
       <>
         <PageHeader
@@ -27,12 +30,13 @@ const HOC = (IProps: ComponentType<any>) => {
             </FlexLayout>
           }
         />
-        <IProps {...props}/>
+        <Children name={pageName}/>
         <PageFooter>
           <TextStyles>Cedcommerce @ 2020</TextStyles>
         </PageFooter>
       </>
     );
   };
+  return DummyComp
 };
 export default HOC;

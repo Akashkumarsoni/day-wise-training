@@ -52,68 +52,67 @@ const Login = (props: IProps) => {
     }
   };
   return (
-    <div className="form-page">
-      <Card>
-        <TextStyles
-          alignment="left"
-          fontweight="normal"
-          textcolor="dark"
-          type="Heading"
-          utility="none"
-        >
-          Login {props.name}
-        </TextStyles>
-        {state.loggedin === "done" && (
-          <SuccessAlert responseMsg={state.message} />
-        )}
-        {state.loggedin === "error" && (
-          <DangerAlert responseMsg={state.message} />
-        )}
-        <Card cardType="Bordered">
-          <FormElement horizontal={false}>
-            
-            <TextField
-              name="username"
-              onChange={(e) => {
-                setUsername(e);
-              }}
-              placeHolder="Enter username"
-              value={username}
-            />
-            <TextField
-              name="password"
-              onChange={(e) => {
-                setPassword(e);
-              }}
-              placeHolder="Enter password"
-              value={password}
-              type="password"
-            />
-            <FlexLayout valign="center" halign="fill">
-              <Button
-                content="Submit"
-                halign="Equal"
-                iconAlign="left"
-                length="none"
-                onAction={function noRefCheck() {
-                  submitDetails();
+      <div className="form-page">
+        <Card>
+          <TextStyles
+            alignment="left"
+            fontweight="normal"
+            textcolor="dark"
+            type="Heading"
+            utility="none"
+          >
+            {props.name}
+          </TextStyles>
+          {state.loggedin === "done" && (
+            <SuccessAlert responseMsg={state.message} />
+          )}
+          {state.loggedin === "error" && (
+            <DangerAlert responseMsg={state.message} />
+          )}
+          <Card cardType="Bordered">
+            <FormElement horizontal={false}>
+              <TextField
+                name="username"
+                onChange={(e) => {
+                  setUsername(e);
                 }}
-                onClick={function noRefCheck() {
-                  submitDetails();
+                placeHolder="Enter username"
+                value={username}
+              />
+              <TextField
+                name="password"
+                onChange={(e) => {
+                  setPassword(e);
                 }}
-                thickness="thin"
-                type="Primary"
+                placeHolder="Enter password"
+                value={password}
+                type="password"
               />
-              <TextStyles
-                content={<a href="/signup">Have no any account?</a>}
-                textcolor="primary"
-              />
-            </FlexLayout>
-          </FormElement>
+              <FlexLayout valign="center" halign="fill">
+                <Button
+                  content="Submit"
+                  halign="Equal"
+                  iconAlign="left"
+                  length="none"
+                  onAction={function noRefCheck() {
+                    submitDetails();
+                  }}
+                  onClick={function noRefCheck() {
+                    submitDetails();
+                  }}
+                  thickness="thin"
+                  type="Primary"
+                />
+                <TextStyles
+                  content={<a href="/signup">Have no any account?</a>}
+                  textcolor="primary"
+                />
+              </FlexLayout>
+            </FormElement>
+          </Card>
+          {state.loading && <Loader type="Loader2" />}
         </Card>
-        {state.loading && <Loader type="Loader2" />}
-      </Card>
-    </div>
+      </div>
   );
 };
 
